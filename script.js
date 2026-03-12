@@ -1,5 +1,5 @@
 // Configuración
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwVJ_w83MgUiDAd-8fEg4wre3Vpvb-Y1kWkV2_5v408hWaabAVWi7XA0RSKQdZmrQ5o/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyNYtnQcFL4BUa7DzEICIh19eheikw-UavB1xxatL71mNnZoEtZUAyLbeEMn0ECaSTm/exec';
 
 // Elementos del DOM
 const form = document.getElementById('storyForm');
