@@ -6,74 +6,78 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a1a2e; /* Azul oscuro panameño */
+    background-color: #1a1a2e;
     color: #eaeaea;
     line-height: 1.6;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Hero / Header */
+/* Header solo con imagen */
 .hero {
+    height: 200px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 60px 20px;
-    text-align: center;
     border-radius: 10px;
-    margin-bottom: 40px;
-    position: relative;
-    background-color: #16213e; /* Color de respaldo */
+    margin-bottom: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6); /* Oscurece la imagen para legibilidad */
+/* Layout de dos columnas */
+.main-layout {
+    display: flex;
+    gap: 25px;
+}
+
+/* Columna izquierda: Chat */
+.chat-column {
+    flex: 3; /* 30% del ancho aprox */
+    background-color: #0f3460;
     border-radius: 10px;
+    padding: 20px;
+    height: fit-content;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.hero h1, .hero p {
-    position: relative;
-    z-index: 2;
+.column-title {
+    color: #f9d342;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e94560;
+    padding-bottom: 10px;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    color: #f9d342; /* Dorado */
-    text-shadow: 2px 2px 4px #000;
-    letter-spacing: 2px;
+.chat-embed iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 5px;
+    background: white;
 }
 
-.subtitle {
-    font-size: 1.3rem;
-    color: #eaeaea;
-    font-style: italic;
-    text-shadow: 1px 1px 2px #000;
+/* Columna derecha: Formulario e Historias */
+.stories-column {
+    flex: 7; /* 70% del ancho aprox */
 }
 
-/* Formulario */
+/* Formulario (mismo estilo, solo ajusto márgenes) */
 .form-section {
-    background-color: #0f3460; /* Azul más claro */
-    padding: 30px;
+    background-color: #0f3460;
+    padding: 25px;
     border-radius: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .form-section h2 {
     color: #f9d342;
     margin-bottom: 20px;
-    border-bottom: 2px solid #e94560; /* Rojo panameño */
+    border-bottom: 2px solid #e94560;
     padding-bottom: 10px;
 }
 
@@ -96,7 +100,7 @@ form input:focus, form textarea:focus {
 }
 
 form button {
-    background-color: #e94560; /* Rojo */
+    background-color: #e94560;
     color: white;
     padding: 14px 25px;
     border: none;
@@ -133,15 +137,14 @@ form button:hover {
 /* Sección de historias */
 .stories-section h2 {
     color: #f9d342;
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 2rem;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
 }
 
 .stories-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 /* Tarjeta de historia */
@@ -187,7 +190,8 @@ form button:hover {
 }
 
 .story-content.show {
-    max-height: 500px; /* Ajusta según necesites */
+    max-height: 400px; /* Altura máxima con scroll */
+    overflow-y: auto;  /* Scroll vertical si el contenido excede */
     padding: 15px;
     transition: max-height 0.5s ease-in;
 }
@@ -212,17 +216,21 @@ form button:hover {
     padding: 30px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: 2.5rem;
+/* Responsive: en pantallas pequeñas, las columnas se apilan */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
     }
     
-    .subtitle {
-        font-size: 1rem;
+    .chat-column {
+        width: 100%;
     }
     
-    .form-section, .stories-section {
-        padding: 20px;
+    .chat-embed iframe {
+        height: 400px;
+    }
+    
+    .hero {
+        height: 150px;
     }
 }
