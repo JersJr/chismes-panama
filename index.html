@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Chismes de Panamá</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: auto; padding: 20px; }
+        input, textarea, button { width: 100%; margin-bottom: 10px; padding: 8px; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Cuéntanos tu chisme / historia panameña</h1>
+    <form id="storyForm">
+        <input type="text" id="nombre" placeholder="Tu nombre (opcional)" />
+        <textarea id="historia" placeholder="Escribe tu historia..." rows="5" required></textarea>
+        <input type="text" id="lugar" placeholder="Lugar (opcional)" />
+        <button type="submit">Enviar historia</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <script>
+        document.getElementById('storyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const historia = document.getElementById('historia').value;
+            const lugar = document.getElementById('lugar').value;
+
+            // Aquí enviaremos los datos al script de Google Apps
+            const url = 'https://script.google.com/macros/s/.../exec'; // Reemplazar luego
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors', // importante para evitar problemas CORS
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ nombre, historia, lugar })
+                });
+                document.getElementById('mensaje').innerText = '¡Historia enviada con éxito!';
+                document.getElementById('storyForm').reset();
+            } catch (error) {
+                document.getElementById('mensaje').innerText = 'Error al enviar. Intenta de nuevo.';
+            }
+        });
+    </script>
+</body>
+</html>
