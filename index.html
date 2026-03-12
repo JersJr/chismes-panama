@@ -9,30 +9,42 @@
 <body>
     <div class="container">
         <header class="hero" style="background-image: url('https://i.ibb.co/ymJh0HyF/Chat-GPT-Image-12-mar-2026-15-44-24.png');">
-            <h1>Chismes</h1>
-            <p class="subtitle">Historias Reales? Tal vez, tal vez no...</p>
+            <!-- Sin texto, solo la imagen de fondo -->
         </header>
 
-        <main>
-            <section class="form-section">
-                <h2>Comparte tu historia</h2>
-                <form id="storyForm">
-                    <input type="text" id="nombre" placeholder="Tu nombre (o 'Anónimo')" />
-                    <textarea id="historia" placeholder="Escribe tu chisme..." rows="4" required></textarea>
-                    <input type="text" id="lugar" placeholder="¿Dónde pasó? (opcional)" />
-                    <button type="submit">Enviar Historia</button>
-                </form>
-                <div id="formMessage" class="message"></div>
-            </section>
-
-            <section class="stories-section">
-                <h2>Historias Recientes</h2>
-                <div id="storiesContainer">
-                    <!-- Las historias se cargarán aquí -->
-                    <p class="loading">Cargando historias...</p>
+        <div class="main-layout">
+            <!-- Columna izquierda: Chat embebido -->
+            <aside class="chat-column">
+                <h2 class="column-title">Chat Panamá</h2>
+                <div class="chat-embed">
+                    <iframe src="https://www.chateamos.net/webchat/chat.php?nick=&channel=panama" 
+                            frameborder="0" 
+                            allowfullscreen>
+                    </iframe>
                 </div>
-            </section>
-        </main>
+            </aside>
+
+            <!-- Columna derecha: Formulario + Historias -->
+            <main class="stories-column">
+                <section class="form-section">
+                    <h2>Comparte tu historia</h2>
+                    <form id="storyForm">
+                        <input type="text" id="nombre" placeholder="Tu nombre (o 'Anónimo')" />
+                        <textarea id="historia" placeholder="Escribe tu chisme..." rows="4" required></textarea>
+                        <input type="text" id="lugar" placeholder="¿Dónde pasó? (opcional)" />
+                        <button type="submit">Enviar Historia</button>
+                    </form>
+                    <div id="formMessage" class="message"></div>
+                </section>
+
+                <section class="stories-section">
+                    <h2>Historias Recientes</h2>
+                    <div id="storiesContainer">
+                        <p class="loading">Cargando historias...</p>
+                    </div>
+                </section>
+            </main>
+        </div>
     </div>
 
     <script src="script.js"></script>
